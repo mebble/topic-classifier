@@ -80,3 +80,5 @@ print(decoded_predictions)
 # plt.ylabel('Loss')
 # plt.legend()
 # plt.show()
+
+model.save('./book_model')

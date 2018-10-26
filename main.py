@@ -59,4 +59,4 @@ score = model.evaluate(x_test, y_test,
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
 
-model.save('./model1')
+model.save('./article_model')
