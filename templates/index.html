@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Concept Difference</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col">
                 <form id="doc-form">
-                    <div class="row">
+                    <div class="form-row">
                         <div class="col">
                             <div class="form-group">
                                 <label>Document 1</label>
@@ -32,8 +32,12 @@
             </div>
         </div>
         <div class="row">
-            <div id="doc1-pred" class="col">Document one predictions</div>
-            <div id="doc2-pred" class="col">Document two predictions</div>
+            <div id="doc1-pred" class="col"></div>
+            <div id="doc2-pred" class="col"></div>
+        </div>
+        <div class="row">
+            <div id="doc1-label" class="col"></div>
+            <div id="doc2-label" class="col"></div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='lib/jquery-3.3.1.min.js') }}"></script>
