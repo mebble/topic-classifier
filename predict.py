@@ -7,18 +7,12 @@ DATA_DIR = "./bbc/"
 data = load_files(DATA_DIR, encoding="utf-8", decode_error="replace")
 X_train, X_test, y_train, y_test = train_test_split(data.data, data.target)
 
+print('Loading the pickles...')
 with open('model.pickle', 'rb') as fd:
     model = pickle.load(fd)
 with open('vectorizer.pickle', 'rb') as fd:
     vectorizer = pickle.load(fd)
-
-f1 = open("input1.txt","r")
-f2 = open("input2.txt","r")
-inputs = [f1.read(),f2.read()]
-
-# Testing
-# y_pred1 = model.predict(vectorizer.transform(X_test))
-# print("Model's Accuracy is " + str(100*accuracy_score(y_test,y_pred1)) + "%")
+print('Done')
 
 def predictions(docs):
     docs_trans = vectorizer.transform(docs)
