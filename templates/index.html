@@ -9,7 +9,33 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
 </head>
 <body>
-    <div>Foofoo</div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form id="doc-form">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Document 1</label>
+                                <textarea id="doc1" class="form-control" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Document 2</label>
+                                <textarea id="doc2" class="form-control" rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Get the prediction</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div id="doc1-pred" class="col">Document one predictions</div>
+            <div id="doc2-pred" class="col">Document two predictions</div>
+        </div>
+    </div>
     <script src="{{ url_for('static', filename='lib/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
