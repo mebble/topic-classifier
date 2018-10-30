@@ -19,13 +19,14 @@ $('#doc-form').submit(function(event) {
 });
 
 function updatePredictions(predictions) {
-    $('#doc1-pred').html(probability_table(predictions.doc1.prob));
-    $('#doc2-pred').html(probability_table(predictions.doc2.prob));
-    $('#doc1-label').html(label(predictions.doc1.label));
-    $('#doc2-label').html(label(predictions.doc2.label));
+    var predictions = `
+        ${predictionRow('Probability', probabilityTable(predictions.doc1.prob), probabilityTable(predictions.doc2.prob))}
+        ${predictionRow('Labels', label(predictions.doc1.label), label(predictions.doc2.label))}
+    `;
+    $('#prediction-container').html(predictions);
 }
 
-function probability_table(probs) {
+function probabilityTable(probs) {
     var table = `
         <table class="table">
             <thead>
@@ -48,5 +49,25 @@ function probability_table(probs) {
 }
 
 function label(label) {
-    return `<h1 class="text-center">${label}</h1>`;
+    var label = `
+        <h3 class="text-center">${label}</h3>
+    `;
+    return label;
+}
+
+function predictionRow(title, doc1, doc2) {
+    var row = `
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col"><h2>${title}</h2></div>
+                </div>
+                <div class="row">
+                    <div class="col">${doc1}</div>
+                    <div class="col">${doc2}</div>
+                </div>
+            </div>
+        </div>
+    `;
+    return row;
 }

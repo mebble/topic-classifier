@@ -1,0 +1,12 @@
+#heading {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.container > .row {
+    margin-bottom: 10px;
+}
+
+#doc-form > .form-row {
+    margin-bottom: 10px;
+}

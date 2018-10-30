@@ -9,37 +9,41 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
 </head>
 <body>
-    <div class="container">
+    <div id="init-container" class="container">
+        <div id="heading" class="row">
+            <div class="col text-center">
+                <h1>Concept Difference</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis eum voluptate molestiae enim consequatur pariatur debitis distinctio hic et odit reprehenderit alias tempora, corrupti officia, quis commodi quidem ut vero?
+                </p>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <form id="doc-form">
                     <div class="form-row">
                         <div class="col">
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <label>Document 1</label>
-                                <textarea id="doc1" class="form-control" rows="3" required></textarea>
+                                <textarea id="doc1" class="form-control" rows="5" required></textarea>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <label>Document 2</label>
-                                <textarea id="doc2" class="form-control" rows="3" required></textarea>
+                                <textarea id="doc2" class="form-control" rows="5" required></textarea>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Get the prediction</button>
+                    <div class="form-row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary">Get the prediction</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="row">
-            <div id="doc1-pred" class="col"></div>
-            <div id="doc2-pred" class="col"></div>
-        </div>
-        <div class="row">
-            <div id="doc1-label" class="col"></div>
-            <div id="doc2-label" class="col"></div>
-        </div>
     </div>
+    <div id="prediction-container" class="container"></div>
     <script src="{{ url_for('static', filename='lib/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
