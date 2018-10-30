@@ -1,7 +1,7 @@
 import pickle
 from sklearn.datasets import load_files
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import accuracy_score
 
 DATA_DIR = "./bbc/"
 data = load_files(DATA_DIR, encoding="utf-8", decode_error="replace")
@@ -20,7 +20,7 @@ inputs = [f1.read(),f2.read()]
 # y_pred1 = model.predict(vectorizer.transform(X_test))
 # print("Model's Accuracy is " + str(100*accuracy_score(y_test,y_pred1)) + "%")
 
-def predictions(docs=[open('input1.txt', 'r').read(), open('input2.txt', 'r').read()]):
+def predictions(docs):
     docs_trans = vectorizer.transform(docs)
     pred = model.predict(docs_trans)
     pred_proba = model.predict_proba(docs_trans)
