@@ -14,9 +14,10 @@ body {
     margin-bottom: 10px;
 }
 
-.pred-label {
+.pred-label, #concept-diff {
     text-align: center;
     font-weight: bold;
-    border: #000 solid 1px;
+    border: #aaa solid 1px;
+    border-radius: 5px;
     padding: 5px;
 }
