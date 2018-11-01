@@ -29,7 +29,7 @@ function updatePredictions(predictions) {
 function probabilityTable(probs) {
     var table = `
         <table class="table">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     <th scope="col">Label</th>
                     <th scope="col">Probability</th>
@@ -39,7 +39,7 @@ function probabilityTable(probs) {
                 ${probs.map(prob => `
                     <tr>
                         <th scope="row">${prob[0]}</th>
-                        <td>${prob[1]}</td>
+                        <td>${prob[1].toFixed(7)}</td>
                     </tr>
                 `).join('')}
             </tbody>
@@ -50,7 +50,7 @@ function probabilityTable(probs) {
 
 function label(label) {
     var label = `
-        <h3 class="text-center">${label}</h3>
+        <h3 class="pred-label">${label}</h3>
     `;
     return label;
 }
@@ -59,7 +59,7 @@ function predictionRow(title, doc1, doc2) {
     var row = `
         <div class="row">
             <div class="col">
-                <div class="row">
+                <div class="row pred-title">
                     <div class="col"><h2>${title}</h2></div>
                 </div>
                 <div class="row">
