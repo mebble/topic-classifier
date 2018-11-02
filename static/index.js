@@ -40,20 +40,22 @@ function probabilityTable(probs1, probs2) {
     });
     const table = `
         <div class="col">
-            <table class="table text-center">
+            <table class="pred-table table text-center">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">Probability</th>
+                        <th scope="col" colspan="2">Probability</th>
                         <th scope="col">Label</th>
-                        <th scope="col">Probability</th>
+                        <th scope="col" colspan="2">Probability</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${formattedProbs.map(prob => `
                         <tr>
-                            <td>${progressBar(prob.value1.toFixed(5), true)}</td>
-                            <th scope="row">${prob.label}</th>
-                            <td>${progressBar(prob.value2.toFixed(5))}</td>
+                            <td>${progressBar(prob.value1, true)}</td>
+                            <td class="narrow-cell">${prob.value1.toFixed(5)}</td>
+                            <th class="narrow-cell" scope="row">${prob.label}</th>
+                            <td class="narrow-cell">${prob.value2.toFixed(5)}</td>
+                            <td>${progressBar(prob.value2)}</td>
                         </tr>
                     `).join('')}
                 </tbody>

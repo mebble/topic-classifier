@@ -27,6 +27,10 @@ body {
     padding: 5px;
 }
 
+.pred-table .narrow-cell {
+    width: 15%;
+}
+
 .progress {
     display: flex;
 }
