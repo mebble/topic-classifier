@@ -51,9 +51,9 @@ function probabilityTable(probs1, probs2) {
                 <tbody>
                     ${formattedProbs.map(prob => `
                         <tr>
-                            <td>${prob.value1.toFixed(5)}</td>
+                            <td>${progressBar(prob.value1.toFixed(5), true)}</td>
                             <th scope="row">${prob.label}</th>
-                            <td>${prob.value2.toFixed(5)}</td>
+                            <td>${progressBar(prob.value2.toFixed(5))}</td>
                         </tr>
                     `).join('')}
                 </tbody>
@@ -61,6 +61,17 @@ function probabilityTable(probs1, probs2) {
         </div>
     `;
     return table;
+}
+
+function progressBar(prob, isRight) {
+    const percentage = prob * 100;
+    const right = isRight ? 'progress-right' : '';
+    const result = `
+        <div class="progress ${right}">
+            <div class="progress-bar" role="progressbar" style="width: ${percentage}%" aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    `;
+    return result;
 }
 
 function label(label) {

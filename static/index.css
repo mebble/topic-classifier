@@ -26,3 +26,11 @@ body {
     border-radius: 5px;
     padding: 5px;
 }
+
+.progress {
+    display: flex;
+}
+
+.progress-right {
+    flex-direction: row-reverse;
+}
