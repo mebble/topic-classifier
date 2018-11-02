@@ -24,31 +24,41 @@ function updatePredictions(predictions) {
     const { concept_diff } = predictions;
 
     let result = '';
-    result += predictionRow('Probability', predictionCols(probabilityTable(prob1), probabilityTable(prob2)));
+    result += predictionRow('Probability', probabilityTable(prob1, prob2));
     result += predictionRow('Labels', predictionCols(label(label1), label(label2)));
     result += predictionRow('Concept Difference', conceptDiff(concept_diff));
 
     $('#prediction-container').html(result);
 }
 
-function probabilityTable(probs) {
+function probabilityTable(probs1, probs2) {
+    const formattedProbs = probs1.map((prob, i) => {
+        const label = prob[0];
+        const value1 = prob[1];
+        const value2 = probs2[i][1];
+        return { label, value1, value2 };
+    });
     const table = `
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Label</th>
-                    <th scope="col">Probability</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${probs.map(prob => `
+        <div class="col">
+            <table class="table text-center">
+                <thead class="thead-light">
                     <tr>
-                        <th scope="row">${prob[0]}</th>
-                        <td>${prob[1].toFixed(5)}</td>
+                        <th scope="col">Probability</th>
+                        <th scope="col">Label</th>
+                        <th scope="col">Probability</th>
                     </tr>
-                `).join('')}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    ${formattedProbs.map(prob => `
+                        <tr>
+                            <td>${prob.value1.toFixed(5)}</td>
+                            <th scope="row">${prob.label}</th>
+                            <td>${prob.value2.toFixed(5)}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
     `;
     return table;
 }
