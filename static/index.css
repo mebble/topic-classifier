@@ -31,10 +31,11 @@ body {
     width: 15%;
 }
 
-.progress {
+.pred-progress {
     display: flex;
 }
 
 .progress-right {
+    display: flex;
     flex-direction: row-reverse;
 }

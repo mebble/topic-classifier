@@ -1,10 +1,7 @@
 $('#doc-form').submit(function(event) {
     const doc1 = $('textarea#doc1').val();
     const doc2 = $('textarea#doc2').val();
-    const data = {
-        doc1: doc1,
-        doc2: doc2
-    };
+    const data = { doc1, doc2 };
 
     $.ajax({
         type: 'POST',
@@ -12,6 +9,14 @@ $('#doc-form').submit(function(event) {
         data: JSON.stringify(data),
         success: function(response) {
             updatePredictions(response);
+            $('.pred-progress-bar')
+                .each(function() {
+                    const $this = $(this);
+                    const percentage = $this.data('prob') * 100;
+                    $this.animate({ width: `${percentage}%` }, 300, 'easeOutExpo', function () {
+                        console.log('Animation completed');
+                    });
+                });
         },
         contentType: 'application/json'
     });
@@ -69,8 +74,8 @@ function progressBar(prob, isRight) {
     const percentage = prob * 100;
     const right = isRight ? 'progress-right' : '';
     const result = `
-        <div class="progress ${right}">
-            <div class="progress-bar" role="progressbar" style="width: ${percentage}%" aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress pred-progress ${right}">
+            <div class="progress-bar pred-progress-bar" data-prob="${prob.toFixed(5)}" role="progressbar" style="width: 0%" aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     `;
     return result;
