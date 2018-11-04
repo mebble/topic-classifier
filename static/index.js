@@ -9,14 +9,7 @@ $('#doc-form').submit(function(event) {
         data: JSON.stringify(data),
         success: function(response) {
             updatePredictions(response);
-            $('.pred-progress-bar')
-                .each(function() {
-                    const $this = $(this);
-                    const percentage = $this.data('prob') * 100;
-                    $this.animate({ width: `${percentage}%` }, 300, 'easeOutExpo', function () {
-                        console.log('Animation completed');
-                    });
-                });
+            animateProbs(500);
         },
         contentType: 'application/json'
     });
@@ -34,6 +27,19 @@ function updatePredictions(predictions) {
     result += predictionRow('Concept Difference', conceptDiff(concept_diff));
 
     $('#prediction-container').html(result);
+}
+
+function animateProbs(delay) {
+    setTimeout(() => {
+        $('.pred-progress-bar')
+            .each(function () {
+                const $this = $(this);
+                const percentage = $this.data('prob') * 100;
+                $this.animate({ width: `${percentage}%` }, 300, 'easeOutExpo', function () {
+                    console.log('Animation completed');
+                });
+            });
+    }, delay);
 }
 
 function probabilityTable(probs1, probs2) {
