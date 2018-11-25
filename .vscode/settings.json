@@ -1,0 +1,7 @@
+{
+    "files.watcherExclude": {
+        "**/__pycache__/**": true,
+        "bbc": true,
+        "venv": true
+    }
+}
