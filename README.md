@@ -24,12 +24,21 @@ Run the server
 - If `virtualenv` is not installed, install it using your OS package manager such as `$ sudo apt install virtualenv` (Ubuntu)
 
 ## Demo GIFs
+First, you enter some text into two fields, which will the documents you want to classify.
+
+![Enter text](docs/one.gif)
+
+And ta-da! The model estimates which topics the documents could belong to, and tells us how different the documents are from each other (the concept difference).
+
+![Show predictions](docs/two.gif)
 
 ## Theory
 ### Classification
 The classifier operates on a document `D` by taking in the text contents of that document, and producing a list of `n` probabilities <code>P<sub>i</sub></code> that correspond to predefined labels <code>L<sub>i</sub></code> that `D` can be classified into.
 ### Concept Difference
 Given a document `D` and a list of `n` labels <code>L<sub>i</sub></code>, the probability distribution <code>P(D)</code> has to satisfy the probability constraints:
+
+![Probability Constraints](docs/equations.png)
 
 Hence, all possible probability distributions `P(D)`, when plotted as vectors along axes <code>L<sub>i</sub></code>, lie on a hyperplane in <code>R<sup>n</sup></code> that is clipped off to only the positive points. Plotting two particular `P(D1)` and `P(D2)` will reveal them as points on this plane. To find the concept difference, we take their Euclidean distance and divide it by `MAX_DIST`. `MAG_DIST` is the largest distance between two points on this plane, which is equal to `sqrt(2)`. The resulting fraction is the concept difference between `D1` and `D2`.
 
